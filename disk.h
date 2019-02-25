@@ -14,5 +14,15 @@ public:
 	~Disk();
 
 };
+//initializeDisk(size) {
+//    size = size * 8;
+//    create array data[size * 8];
+//}
+//void write(address, value) {
+//    use data array to write
+//}
+//char read(address) { //address will be between 0 and 2048
+//    use data array to read
+//}
 
 #endif // DISK_H
