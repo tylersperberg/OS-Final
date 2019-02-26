@@ -1,0 +1,28 @@
+// just putting the templated memory functions here
+
+#include "memory.h"
+#include "globals.h"
+#include <assert.h>
+
+template<typename T>
+void Memory::readMemory(int baseAddress, T* buffer, size_t dataSize)
+{
+	assert(dataSize <= sizeof(buffer));
+
+	// data to be written to buffer
+	unsigned long long result = data[baseAddress]; // write first byte
+	
+	for (int i = 1; i < dataSize; i++)
+	{
+		result = (result << 8) + data[baseAddress + i]; // shift over one byte and concatenate
+	}
+	
+	// write result to buffer
+	*buffer = result;
+}
+
+template<typename T>
+void Memory::writeMemory(int baseAddress, T* buffer, size_t dataSize)
+{
+	// ...
+}	
