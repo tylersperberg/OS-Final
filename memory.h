@@ -2,7 +2,6 @@
 #define MEMORY_H
 
 #include "globals.h"
-#include <bitset>
 
 // Memory indexes are per byte.
 
