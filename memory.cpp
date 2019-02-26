@@ -1,10 +1,6 @@
 #include "memory.h"
+#include "globals.h"
+#include <assert.h>
 
-Memory::Memory()
-{
-}
-
-Memory::~Memory()
-{
-}
-
+// initialize memory contents
+types::Byte Memory::data[MEMORY_SIZE];
