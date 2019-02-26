@@ -1,10 +1,13 @@
 // just putting the templated memory functions here
 
 #include "memory.h"
+#include <assert.h>
 
 template<typename T>
 void Memory::readMemory(int baseAddress, T* buffer, size_t dataSize)
 {
+	assert(dataSize <= sizeof(buffer))
+
 	// data to be written to buffer
 	unsigned long long result = data[baseAddress]; // write first byte
 	
