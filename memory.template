@@ -5,13 +5,14 @@
 #include <assert.h>
 
 template<typename T>
-void Memory::readMemory(int baseAddress, T* buffer, size_t dataSize)
+void Memory::readMemory(unsigned int baseAddress, T* buffer, size_t dataSize)
 {
 	assert(dataSize <= sizeof(buffer));
 
-	// data to be written to buffer
-	unsigned long long result = data[baseAddress]; // write first byte
+	// data to be written to buffer. using the largest data type
+	unsigned long long result = data[baseAddress]; // get first byte
 	
+	// add on the following bytes to the result
 	for (int i = 1; i < dataSize; i++)
 	{
 		result = (result << 8) + data[baseAddress + i]; // shift over one byte and concatenate
@@ -22,7 +23,14 @@ void Memory::readMemory(int baseAddress, T* buffer, size_t dataSize)
 }
 
 template<typename T>
-void Memory::writeMemory(int baseAddress, T* buffer, size_t dataSize)
+void Memory::writeMemory(unsigned int baseAddress, T* buffer, size_t dataSize)
 {
-	// ...
+	assert(dataSize >= sizeof(buffer));
+	
+	// for each byte in the buffer
+	for (int i = 0; i < dataSize; i++)
+	{
+		// write each byte down the memory block in decending order
+		data[baseAddress + i] = *buffer >> (8 * (dataSize - 1)) - 8 * i;
+	}
 }	
