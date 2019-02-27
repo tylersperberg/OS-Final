@@ -4,18 +4,17 @@
 #include <iostream>
 
 // initialize memory contents
-Memory::Memory()
+Memory::Memory(size_t size)
 {
-	types::Byte data[MEMORY_SIZE];
+	types::Byte data[size];
 }
 
 Memory::~Memory()
 {
-	types::Byte data[MEMORY_SIZE];
 }
 
 //**DEBUG FUNCTIONS**//
-void Memory::printMemBlock(unsigned int baseAddress, size_t size)
+void Memory::printBlock(unsigned int baseAddress, size_t size)
 {
 	for (int i = baseAddress; i < size; i++) 
 	{

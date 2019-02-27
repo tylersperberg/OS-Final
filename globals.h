@@ -1,6 +1,5 @@
 #include <stdint.h>
-
-// maybe include globally used types and functions here?
+#include <cstdlib>
 
 namespace types
 {
