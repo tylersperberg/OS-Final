@@ -1,4 +1,5 @@
 #include <iostream>
+#include "memory.h"
 
 int main()
 {
@@ -12,17 +13,19 @@ int main()
 	
 	// memory test
 	
+	Memory ram = Memory();
+	
 	// write
 	int x = -1234;
-	Memory::writeMemory(0, &x, sizeof(x));
+	ram.writeMemory(0, &x, sizeof(x));
 	
 	// show memory
 	std::cout << "first 32 bytes of memory:" << std::endl;
-	Memory::printMemBlock(0, 32);
+	ram.printMemBlock(0, 32);
 	
 	// read
 	int y;
-	Memory::readMemory(0, &y, sizeof(y));
+	ram.readMemory(0, &y, sizeof(y));
 	
 	// check if it read and wrote properly
 	std::cout << std::dec << "value of y: " << y << std::endl;
