@@ -1,5 +1,6 @@
 #include <iostream>
 #include "memory.h"
+#include "disk.h"
 
 int main()
 {
@@ -11,21 +12,22 @@ int main()
 	
 	/**DEBUGGING**/
 	
-	// memory test
+	// test
 	
-	Memory ram = Memory();
+	Memory	ram 	= Memory(1024 * 4); // initialize RAM
+	Disk 	disk  	= Disk	(2048 * 4); // initialize disk
 	
 	// write
 	int x = -1234;
-	ram.writeMemory(0, &x, sizeof(x));
+	disk.write(0, &x, sizeof(x));
 	
-	// show memory
-	std::cout << "first 32 bytes of memory:" << std::endl;
-	ram.printMemBlock(0, 32);
+	// show disk data
+	std::cout << "first 32 bytes of data:" << std::endl;
+	disk.printBlock(0, 32);
 	
 	// read
 	int y;
-	ram.readMemory(0, &y, sizeof(y));
+	disk.read(0, &y, sizeof(y));
 	
 	// check if it read and wrote properly
 	std::cout << std::dec << "value of y: " << y << std::endl;
