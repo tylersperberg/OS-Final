@@ -25,7 +25,7 @@ void Disk::read(unsigned int baseAddress, T* buffer, size_t dataSize)
 template<typename T>
 void Disk::write(unsigned int baseAddress, T* buffer, size_t dataSize)
 {
-	assert(dataSize >= sizeof(buffer));
+	assert(dataSize <= sizeof(buffer));
 	
 	// for each byte in the buffer
 	for (unsigned int i = 0; i < dataSize; i++)

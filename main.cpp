@@ -18,7 +18,7 @@ int main()
 	Disk 	disk  	= Disk	(2048 * 4); // initialize disk
 	
 	// write
-	int x = -1234;
+	unsigned int x = 0xABCDEF12;
 	disk.write(0, &x, sizeof(x));
 	
 	// show disk data
@@ -26,9 +26,9 @@ int main()
 	disk.printBlock(0, 32);
 	
 	// read
-	int y;
+	unsigned int y;
 	disk.read(0, &y, sizeof(y));
 	
 	// check if it read and wrote properly
-	std::cout << std::dec << "value of y: " << y << std::endl;
+	std::cout << std::hex << "value of y: " << y << std::endl;
 }

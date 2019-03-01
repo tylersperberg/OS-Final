@@ -1,11 +1,11 @@
-// just putting the templated memory functions here
+// templated memory functions go here
 
 #include "memory.h"
 #include "globals.h"
 #include <assert.h>
 
 template<typename T>
-void Memory::readMemory(unsigned int baseAddress, T* buffer, size_t dataSize)
+void Memory::read(unsigned int baseAddress, T* buffer, size_t dataSize)
 {
 	assert(dataSize <= sizeof(buffer));
 
@@ -13,7 +13,7 @@ void Memory::readMemory(unsigned int baseAddress, T* buffer, size_t dataSize)
 	unsigned long long result = data[baseAddress]; // get first byte
 	
 	// add on the following bytes to the result
-	for (int i = 1; i < dataSize; i++)
+	for (unsigned int i = 1; i < dataSize; i++)
 	{
 		result = (result << 8) + data[baseAddress + i]; // shift over one byte and concatenate
 	}
@@ -23,12 +23,12 @@ void Memory::readMemory(unsigned int baseAddress, T* buffer, size_t dataSize)
 }
 
 template<typename T>
-void Memory::writeMemory(unsigned int baseAddress, T* buffer, size_t dataSize)
+void Memory::write(unsigned int baseAddress, T* buffer, size_t dataSize)
 {
-	assert(dataSize >= sizeof(buffer));
+	assert(dataSize <= sizeof(buffer));
 	
 	// for each byte in the buffer
-	for (int i = 0; i < dataSize; i++)
+	for (unsigned int i = 0; i < dataSize; i++)
 	{
 		// write each byte down the memory block in decending order
 		data[baseAddress + i] = *buffer >> (8 * (dataSize - 1)) - 8 * i;
