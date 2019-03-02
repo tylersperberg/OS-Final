@@ -8,6 +8,17 @@ Driver::~Driver()
 {
 }
 
+void Driver::loader()
+{
+	/*
+	while (not end-of-program-data-file) do {
+		Read-File();
+		Extract program attributes into the PCB
+		Insert hex-code or instructions into the simulated RAM
+	}
+	*/
+}
+
 //pseudoLoader(String filePath) {
 //if running:
 //    create threads/cpu

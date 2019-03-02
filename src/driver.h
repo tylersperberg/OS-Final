@@ -3,6 +3,9 @@
 
 class Driver
 {
+private:
+	void loader(); // should the loader be a function?
+	
 public:
 	Driver();
 	~Driver();
